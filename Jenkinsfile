@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.10'
+        }
+    }
 
     stages {
         stage('Clone Repo') {
@@ -16,19 +20,21 @@ pipeline {
 
         stage('Run Tests') {
             steps {
+                sh 'pip install pytest' // Ensure pytest is available
                 sh 'pytest tests'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t task-manager:latest .'
+                // Use docker-in-docker or run this stage on a separate agent if needed
+                echo 'Docker build will require a different agent with Docker installed'
             }
         }
 
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d -p 5000:5000 task-manager:latest'
+                echo 'Docker run will require a different agent with Docker installed'
             }
         }
     }
