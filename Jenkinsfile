@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/your-username/task-manager-devops.git'
+                git 'https://github.com/Arcade138/devops.git'
             }
         }
 
