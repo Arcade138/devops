@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'python:3.10'
-            args '-u root:root'
+            args '-u root:root' #gives the permission from root user
         }
     }
 
